@@ -1,0 +1,32 @@
+package practica2;
+
+import java.util.Random;
+
+/**
+ *
+ * @author Arturo Manzur
+ */
+public class Caballero extends Personaje {
+    
+    public Caballero()
+    {
+        super("Caballero",200,95,45,0.70,"Respiracion del rayo, primera postura");
+        
+    }
+    
+    public void aumentoataque()
+    {
+        Random n = new Random();
+        int num = n.nextInt(200);
+        if(num>100&&num<150&&this.getSalud()<=50)
+        {
+            int ataque = this.getAtaque();
+            ataque+=2;
+            this.setAtaque(ataque);
+           
+            System.out.println("Aun no he terminado con esto");
+            System.out.println("Peleare contra ti hasta que ganeeee!");
+            
+        }
+    }
+}
