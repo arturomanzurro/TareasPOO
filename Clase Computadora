@@ -1,0 +1,30 @@
+package practica2;
+import java.util.Random;
+
+/**
+ *
+ * @author Arturo Manzur
+ */
+public final class Computadora extends Personaje {
+    
+    private int vidatotal;
+    public Computadora()
+    {
+        super();
+        this.vidatotal=super.getSalud();
+    }
+    
+    
+    public void aumentodefensa()
+    {
+        Random n = new Random();
+        int num = n.nextInt(200);
+        if (num>150 &&((double)super.getSalud()/(double)this.vidatotal)<=0.20)
+        {
+            int defensa = super.getDefensa();
+            defensa+=5;
+            super.setDefensa(defensa);
+            System.out.println("Que esperabas hacerme con ese ataque de clase baja ");
+        }
+    }
+}
