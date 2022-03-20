@@ -1,0 +1,36 @@
+package practica2;
+
+import java.util.Random;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Arturo Manzur
+ */
+public class Mago extends Personaje {
+    
+    public Mago()
+    {
+        super("Mago",75,105,35,0.65,"Bola de fuego");
+    
+    }
+    
+    public void aumentarsalud()
+    {
+        Random n = new Random();
+        int num = n.nextInt(200);
+        if(num<50 && ((double)super.getSalud()/75.0)<0.5)
+        {
+            int salud = this.getSalud();
+            salud+=10;
+            super.setSalud(salud);
+            System.out.println("Crees que con eso es suficiente para derrotarme!!!");
+            System.out.println("Ahora ven terminemos con esto");
+                    
+        }
+    }
+}
