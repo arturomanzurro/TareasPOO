@@ -1,0 +1,32 @@
+package practica2;
+
+import java.util.Random;
+
+/**
+ *
+ * @author Arturo Manzur
+ */
+public class Guerrero extends Personaje {
+    
+    public Guerrero()
+    {
+        super("Guerrero",150,90,30,0.75,"Lanza de fuego");
+    }
+    
+    public void aumentodefensa()
+    {
+         Random n = new Random();
+        int num = n.nextInt(200);
+        if(num>100 && num<150)
+        {
+            int defensa = this.getDefensa();
+            defensa+=2;
+            this.setDefensa(defensa);
+            double ta = this.getTa();
+            ta-=0.01;
+            this.setDefensa(defensa);
+            System.out.println("Aun no creas que es mi derrota");
+        }
+    }
+    
+}
