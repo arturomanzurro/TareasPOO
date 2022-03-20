@@ -1,0 +1,135 @@
+package practica2;
+
+
+ 
+public class Personaje {
+    // Encapsulamiento de los Datos.
+    //Atributos propios y caracteristicos de los personajes.
+  private String nombre;
+  private int salud;
+  private int ataque;
+  private int defensa;
+  private double ta;
+  private String tipoA;
+  
+  //Metodo Constructor (Permitira la creacion de objetos de la clase)
+  public Personaje() 
+  {
+      nombre=("Computadora");
+      salud=200;
+      ataque=(100);
+      defensa=(20);
+      ta=(0.60);
+    
+    
+  }
+  
+  public double getTa()
+  {
+      return this.ta;
+  }
+  public void setTa(double tasa_a )
+  {
+      this.ta=tasa_a;
+  }
+  
+  
+  
+  public int getDefensa()
+  {
+      return this.defensa;
+  }
+  
+  public void setDefensa(int defen_sa )
+  {
+      this.defensa=defen_sa;
+  }
+  
+  public int getAtaque()
+  {
+      return this.ataque;
+  }
+  public void setAtaque(int ata_que )
+  {
+      this.ataque=ata_que;
+  }
+  
+  public int getSalud()
+  {
+      return this.salud;
+  }
+ 
+ public void setSalud (int salu_d )
+ {
+     this.salud=salu_d;
+ }
+  
+ 
+  public String getNombre()
+  {
+      return this.nombre;
+      
+  }
+   
+  public void setNombre(String nom_bre )
+  {
+      this.nombre=nom_bre;
+  }
+  
+  public String getTipoA()
+  { 
+      return this.tipoA;
+  
+  }
+  
+  public Personaje(String nom_bre,int sa_lud, int ata_que,int defen_sa,double _ta,String _tipoA) 
+  {
+    nombre= nom_bre;
+    salud=sa_lud;
+    ataque=ata_que;
+    defensa=defen_sa;
+    ta=_ta;
+    tipoA=_tipoA;
+      
+    
+    
+  }
+  
+  
+ 
+  //Este metodo funciona para ver si nuestro personaje es lastimado o no.
+  public void Lastimado(int a_taque)
+  {
+      int vida_res =this.salud;
+      int danhorecibido = a_taque - this.defensa;
+      if(danhorecibido>0)
+      {
+          vida_res-=danhorecibido;
+          System.out.println(this.getNombre() + "Ha sido atacado " +"Salud restante: " + danhorecibido);
+          
+      } else 
+      {
+          System.out.println( "El ataque fue  demasido debil para dañar a " + this.getNombre());
+      }
+      this.salud=vida_res;
+      System.out.println(this.getNombre() + "Tu vida actual es de: " + this.salud);
+  }
+  
+  
+  //Metodo para advertir que un personaje ha esquivado con exito el ataque
+  public void Esquivo() 
+  {
+    System.out.println(this.nombre + " Ha esquivado el ataque, preparate para defender.");
+  }
+ 
+  //Revision del estado del personaje si esta vivo o no sobrevivio
+  
+  public boolean EstadodeVida()
+  {
+    boolean estado= true;
+    
+    if (this.salud<= 0) estado=false;
+    
+    return estado;
+  }
+}
