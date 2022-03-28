@@ -1,0 +1,264 @@
+package practica2;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Arturo Manzur
+ */
+public class Practica2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int rondas=0;
+        String  batalla,pers,opon;
+        Caballero caballero = new Caballero();
+        Mago mago = new Mago();
+        Guerrero guerrero = new Guerrero();
+        Computadora computadora = new Computadora();
+        
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("//////////////////////////");
+        System.out.println("Bienvenidos Combatientes");
+        System.out.println("//////////////////////////");
+        
+        
+        System.out.println("J1 ELIGE UN PERSONAJE");
+        System.out.println("A.Caballero");
+        System.out.println("B.Mago");
+        System.out.println("C.Guerrero");
+        pers=sc.next();
+        
+        System.out.println("///////////////////////");
+        
+        System.out.println("ELIGE UN PERSONAJE PARA SU OPONENTE");
+        System.out.println("A.Caballero");
+        System.out.println("B.Mago");
+        System.out.println("C.Guerrero");
+        System.out.println("D.Computadora");
+        opon=sc.next();
+        
+        while(pers.contains(opon))
+        {
+            System.out.println("");
+            System.out.println("ELIGE UN PERSONAJE PARA SU OPONENTE");
+            System.out.println("A.Caballero");
+            System.out.println("B.Mago");
+            System.out.println("C.Guerrero");
+            System.out.println("D.Computadora");
+            opon=sc.next();
+        }
+        
+        batalla=pers.trim()+opon.trim();
+        
+        switch(batalla)
+        {
+            case "AB":
+                while(caballero.EstadodeVida()&&mago.EstadodeVida())
+                {
+                    rondas++;
+                    System.out.println("Ronda: " + rondas);
+                    if(pelea(mago.getTa())) 
+                    {
+                        caballero.Lastimado(mago.getAtaque(),mago.getTipoA());
+                    }
+                    else caballero.Esquivo();
+                    if(pelea(caballero.getTa()))
+                    {
+                        mago.Lastimado(caballero.getAtaque(), caballero.getTipoA());
+                    } else mago.Esquivo();
+                    caballero.aumentoataque();
+                    mago.aumentarsalud();
+                    if (mago.EstadodeVida()) mago.Ganador();
+                    else caballero.Ganador();
+                    
+                 
+                    
+                }
+                break;
+            case "AC":
+                while(caballero.EstadodeVida() && guerrero.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(caballero.getTa()))
+                    {
+                        guerrero.Lastimado(caballero.getAtaque(),caballero.getTipoA());
+                    }else guerrero.Esquivo();
+                    if(pelea(guerrero.getTa()))
+                    {
+                        caballero.Lastimado(guerrero.getAtaque(), guerrero.getTipoA());
+                    }else caballero.Esquivo();
+                    caballero.aumentoataque();
+                    guerrero.aumentodefensa();
+                    if (guerrero.EstadodeVida()) guerrero.Ganador();
+                    else caballero.Ganador();
+                    
+                }
+                break;
+                
+            case "AD":
+                 while(caballero.EstadodeVida() && computadora.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(caballero.getTa()))
+                    {
+                        computadora.Lastimado(caballero.getAtaque(),caballero.getTipoA());
+                    }else computadora.Esquivo();
+                    if(pelea(computadora.getTa()))
+                    {
+                        caballero.Lastimado(computadora.getAtaque(), computadora.getTipoA());
+                    }else caballero.Esquivo();
+                    caballero.aumentoataque();
+                    computadora.aumentodefensa();
+                    if (computadora.EstadodeVida()) computadora.Ganador();
+                    else caballero.Ganador();
+                    
+                }
+                 break;
+                 
+            case "BA":
+                 while(mago.EstadodeVida() && caballero.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(caballero.getTa()))
+                    {
+                        mago.Lastimado(caballero.getAtaque(),caballero.getTipoA());
+                    }else mago.Esquivo();
+                    if(pelea(mago.getTa()))
+                    {
+                        caballero.Lastimado(mago.getAtaque(), mago.getTipoA());
+                    }else caballero.Esquivo();
+                    caballero.aumentoataque();
+                    mago.aumentarsalud();
+                    if (mago.EstadodeVida()) mago.Ganador();
+                    else caballero.Ganador();
+                    
+                }
+                 break;
+            case "BC":
+                 while(mago.EstadodeVida() && guerrero.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(mago.getTa()))
+                    {
+                        guerrero.Lastimado(mago.getAtaque(),mago.getTipoA());
+                    }else guerrero.Esquivo();
+                    if(pelea(guerrero.getTa()))
+                    {
+                        mago.Lastimado(guerrero.getAtaque(), guerrero.getTipoA());
+                    }else mago.Esquivo();
+                    mago.aumentarsalud();
+                    guerrero.aumentodefensa();
+                    if (guerrero.EstadodeVida()) guerrero.Ganador();
+                    else caballero.Ganador();
+                    
+                }
+                 break;
+            case "BD":
+                 while(mago.EstadodeVida() && computadora.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(mago.getTa()))
+                    {
+                        computadora.Lastimado(mago.getAtaque(),mago.getTipoA());
+                    }else computadora.Esquivo();
+                    if(pelea(computadora.getTa()))
+                    {
+                        mago.Lastimado(computadora.getAtaque(), computadora.getTipoA());
+                    }else mago.Esquivo();
+                    mago.aumentarsalud();
+                    computadora.aumentodefensa();
+                    if (computadora.EstadodeVida()) computadora.Ganador();
+                    else mago.Ganador();
+                    
+                }
+                 break;
+            case "CA":
+                 while(guerrero.EstadodeVida() && caballero.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(guerrero.getTa()))
+                    {
+                        caballero.Lastimado(guerrero.getAtaque(),guerrero.getTipoA());
+                    }else caballero.Esquivo();
+                    if(pelea(caballero.getTa()))
+                    {
+                        guerrero.Lastimado(caballero.getAtaque(), caballero.getTipoA());
+                    }else guerrero.Esquivo();
+                    caballero.aumentoataque();
+                    guerrero.aumentodefensa();
+                    if (guerrero.EstadodeVida()) guerrero.Ganador();
+                    else caballero.Ganador();
+                    
+                }
+                 break;
+            case "CB":
+                 while(guerrero.EstadodeVida() && mago.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(guerrero.getTa()))
+                    {
+                        mago.Lastimado(guerrero.getAtaque(),guerrero.getTipoA());
+                    }else mago.Esquivo();
+                    if(pelea(mago.getTa()))
+                    {
+                        guerrero.Lastimado(mago.getAtaque(), mago.getTipoA());
+                    }else guerrero.Esquivo();
+                   guerrero.aumentodefensa();
+                   mago.aumentarsalud();
+                    if (guerrero.EstadodeVida()) guerrero.Ganador();
+                    else mago.Ganador();
+                    
+                }
+                 break;
+            case "CD":
+                 while(guerrero.EstadodeVida() && computadora.EstadodeVida())
+                {
+                    rondas++;
+                    if(pelea(guerrero.getTa()))
+                    {
+                        computadora.Lastimado(guerrero.getAtaque(),guerrero.getTipoA());
+                    }else computadora.Esquivo();
+                    if(pelea(computadora.getTa()))
+                    {
+                        guerrero.Lastimado(computadora.getAtaque(), computadora.getTipoA());
+                    }else guerrero.Esquivo();
+                    guerrero.aumentodefensa();
+                    computadora.aumentodefensa();
+                    if (guerrero.EstadodeVida()) guerrero.Ganador();
+                    else computadora.Ganador();
+                    
+                }
+                 break;
+                
+                
+                
+            
+            default:
+                
+              System.out.println("La Opcion no es valida");
+                
+                
+        }
+     
+        
+    
+ 
+            
+        }
+    
+       public static boolean pelea(double _ta)
+        {
+            boolean flag = false;
+            Random n = new  Random();
+            int valor=n.nextInt(100);
+            
+            if(valor<(int)(_ta*100)) flag=true;
+            return flag;
+    }
+    
+}
