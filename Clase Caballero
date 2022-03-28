@@ -10,7 +10,7 @@ public class Caballero extends Personaje {
     
     public Caballero()
     {
-        super("Caballero",200,95,45,0.70,"Respiracion del rayo, primera postura");
+        super("Caballero",200,95,55,0.70,"Respiracion del rayo, primera postura");
         
     }
     
@@ -24,9 +24,15 @@ public class Caballero extends Personaje {
             ataque+=2;
             this.setAtaque(ataque);
            
-            System.out.println("Aun no he terminado con esto");
-            System.out.println("Peleare contra ti hasta que ganeeee!");
+            System.out.println(super.getNombre()+" :Aun no he terminado con esto");
+            System.out.println(super.getNombre()+" :Peleare contra ti hasta que ganeeee!");
             
         }
     }
+    
+    public void Ganador()
+    {
+        System.out.println(super.getNombre()+ ": Mi entrenamiento no fue en vano");
+    }
 }
+
