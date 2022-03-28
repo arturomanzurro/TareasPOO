@@ -8,9 +8,9 @@ import java.util.Random;
 public final class Computadora extends Personaje {
     
     private int vidatotal;
-    public Computadora()
+    public  Computadora()
     {
-        super();
+        super("Computadora",200,100,20,0.60,"Lo destruire todo");
         this.vidatotal=super.getSalud();
     }
     
@@ -24,7 +24,14 @@ public final class Computadora extends Personaje {
             int defensa = super.getDefensa();
             defensa+=5;
             super.setDefensa(defensa);
-            System.out.println("Que esperabas hacerme con ese ataque de clase baja ");
+            System.out.println(super.getNombre()+" :Que esperabas hacerme con ese ataque de clase baja ");
         }
+    }
+    
+    
+    
+    public void Ganador()
+    {
+        System.out.println(super.getNombre() + " :Te desinstale de la faz de la tierra");
     }
 }
