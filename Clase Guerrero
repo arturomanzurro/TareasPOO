@@ -10,7 +10,7 @@ public class Guerrero extends Personaje {
     
     public Guerrero()
     {
-        super("Guerrero",150,90,30,0.75,"Lanza de fuego");
+        super("Guerrero",150,90,60,0.75,"Lanza de fuego");
     }
     
     public void aumentodefensa()
@@ -25,8 +25,12 @@ public class Guerrero extends Personaje {
             double ta = this.getTa();
             ta-=0.01;
             this.setDefensa(defensa);
-            System.out.println("Aun no creas que es mi derrota");
+            System.out.println(super.getNombre()+" :Aun no creas que es mi derrota");
         }
     }
     
+    public void Ganador()
+    {
+        System.out.println(super.getNombre()+ ": Jamas fuiste un rival digno, por eso perdiste");
+    }
 }
