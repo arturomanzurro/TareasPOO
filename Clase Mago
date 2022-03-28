@@ -28,9 +28,14 @@ public class Mago extends Personaje {
             int salud = this.getSalud();
             salud+=10;
             super.setSalud(salud);
-            System.out.println("Crees que con eso es suficiente para derrotarme!!!");
-            System.out.println("Ahora ven terminemos con esto");
+            System.out.println(super.getNombre()+" :Crees que con eso es suficiente para derrotarme!!!");
+            System.out.println(super.getNombre()+" :Ahora ven terminemos con esto");
                     
         }
+    }
+    
+    public void Ganador()
+    {
+        System.out.println(super.getNombre() + " :Que esperabas hacer con ese nivel de pelea");
     }
 }
